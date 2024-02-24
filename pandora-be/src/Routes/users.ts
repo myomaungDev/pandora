@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   destroyUser,
   profileUser,
+  signinUser,
   signupUser,
   updateUser,
 } from "../Controllers/users";
@@ -44,7 +45,7 @@ router.post(
 
     body("password").notEmpty().isString(),
   ],
-  signupUser
+  signinUser
 );
 
 router.get("/profile", auth, profileUser);
