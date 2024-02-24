@@ -8,7 +8,7 @@ import { APIURLS } from "../Config";
 import { AxiosError, AxiosResponse } from "axios";
 import { useAuthContext } from "../Providers/AuthProvider";
 import { AppErrorMessage } from "../Components/Atoms/AppErrorMessage";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 export const AppSignupScreen: React.FC = () => {
   const { setIsAuth, setUser, setAccessToken } = useAuthContext();
   const { control, handleSubmit, watch, setError } = useForm<signupFormProps>({
@@ -31,13 +31,17 @@ export const AppSignupScreen: React.FC = () => {
             setIsAuth(true);
             setAccessToken(res.data.access_token);
             setUser(res.data.data);
-            navigate('/')
+            navigate("/");
           }
         })
         .catch((err: AxiosError) => {
           if (err.response?.status === 422 && err.response.data) {
             const errorMessages: any = err.response.data;
+            const errorMsg: string | undefined = errorMessages.message;
             const errors: errorMessageProps[] = errorMessages.data;
+            if (errorMsg) {
+              setError("password", { type: "pattern", message: errorMsg });
+            }
             errors.forEach((e: errorMessageProps) => {
               if (e.path === "email") {
                 setError(e.path, { type: "pattern", message: e.msg });

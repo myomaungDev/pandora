@@ -23,15 +23,17 @@ export interface signupFormProps extends signinFormProps {
   confirm_password: string;
 }
 
+export interface userProdileUpdateFormProps extends signupFormProps {}
+
 export interface postFormProps {
   title: string;
   content: string;
 }
 
 export interface errorMessageProps {
-  location:string;
+  location: string;
   msg: string;
-  path:string
-  type: string
-  value: string
+  path: string;
+  type: string;
+  value: string;
 }

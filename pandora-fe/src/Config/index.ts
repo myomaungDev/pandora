@@ -6,14 +6,15 @@ export const APIURLS = {
   users: {
     signup: "/users/signup",
     signin: "/users/signin",
-    profile: "/profile",
-    destroy: "/destroy",
+    profile: "/users/profile",
+    destroy: "/users/destroy",
+    update:"/users/update"
   },
   post: {
     create: "/posts/create-post",
     update: "/posts/update-post",
     destroy: "/posts/destroy-post",
     all: "/posts/all-posts",
-    single: "",
+    single: "/posts/get-post",
   },
 };
