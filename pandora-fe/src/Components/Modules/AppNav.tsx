@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../Providers/AuthProvider";
 
 export const AppNavBar: React.FC = () => {
+  const { isAuth } = useAuthContext();
   return (
     <React.Fragment>
       <nav className="w-full top-0 sticky bg-white px-2 py-2 shadow-md z-10">
@@ -27,24 +29,31 @@ export const AppNavBar: React.FC = () => {
                   >
                     Add Post
                   </Link>
-                  <Link
-                    to={"/profile"}
-                    className="text-lg font-bold  text-slate-700 hover:text-slate-900"
-                  >
-                    Profile
-                  </Link>
-                  <Link
-                    to={"/profile"}
-                    className="text-lg font-bold  text-slate-700 hover:text-slate-900"
-                  >
-                    Login
-                  </Link>
-                  <Link
-                    to={"/profile"}
-                    className="text-lg font-bold  text-slate-700 hover:text-slate-900"
-                  >
-                    Signup
-                  </Link>
+                  {isAuth ? (
+                    <React.Fragment>
+                      <Link
+                        to={"/auth"}
+                        className="text-lg font-bold  text-slate-700 hover:text-slate-900"
+                      >
+                        Profile
+                      </Link>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <Link
+                        to={"/signin"}
+                        className="text-lg font-bold  text-slate-700 hover:text-slate-900"
+                      >
+                        Login
+                      </Link>
+                      <Link
+                        to={"/signup"}
+                        className="text-lg font-bold  text-slate-700 hover:text-slate-900"
+                      >
+                        Signup
+                      </Link>
+                    </React.Fragment>
+                  )}
                 </div>
               </div>
             </div>
