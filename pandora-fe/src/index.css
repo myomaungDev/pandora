@@ -1,7 +1,15 @@
-*{
-  margin: 0;
-  padding: 0;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+* {
+  font-family: "Roboto Slab", serif;
+  margin: 0px;
+  padding: 0px;
 }
+
 
 
 *::-webkit-scrollbar {
@@ -42,6 +50,5 @@
   text-align: center;
   font-weight: bold;
   font-size: 1rem;
-  @apply animate-bounce ;
-  
+  @apply animate-bounce;
 }
