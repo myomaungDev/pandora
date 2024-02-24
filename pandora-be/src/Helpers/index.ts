@@ -19,7 +19,7 @@ export const comparePassword = async (
   password: string,
   hashedPassword: string
 ): Promise<boolean> => {
-  const isMatch: boolean = bcrypt.compareSync(password, hashedPassword);
+  const isMatch: boolean =  bcrypt.compareSync(password, hashedPassword);
   return isMatch;
 };
 

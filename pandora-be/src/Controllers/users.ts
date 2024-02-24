@@ -52,7 +52,7 @@ export const signinUser = async (
       throw error;
     } else {
       const user = await AppDataSource.manager.findOne(User, {
-        where: { email: req.body.email },
+        where: { email: req.body.email },select:{email:true,password:true,username:true}
       });
       if (user) {
         const isMatchPassword = await comparePassword(
@@ -60,7 +60,8 @@ export const signinUser = async (
           user.password
         );
         if (isMatchPassword) {
-          const accessToken = signToken(user);
+          
+         const accessToken = signToken(user);
           res.status(200).json({
             data: user,
             message: "user login successfully!",
