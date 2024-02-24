@@ -21,6 +21,10 @@ API.interceptors.response.use(
       const { access_token } = response.data;
       localStorage.setItem("pandora_access_token", access_token);
     }
+    if (response.config.url?.includes(APIURLS.users.signup)) {
+      const { access_token } = response.data;
+      localStorage.setItem("pandora_access_token", access_token);
+    }
     return response;
   },
   (error) => {

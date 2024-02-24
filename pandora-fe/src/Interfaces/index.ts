@@ -12,3 +12,26 @@ export interface userProps {
   username: string;
   email: string;
 }
+
+export interface signinFormProps {
+  email: string;
+  password: string;
+}
+
+export interface signupFormProps extends signinFormProps {
+  username: string;
+  confirm_password: string;
+}
+
+export interface postFormProps {
+  title: string;
+  content: string;
+}
+
+export interface errorMessageProps {
+  location:string;
+  msg: string;
+  path:string
+  type: string
+  value: string
+}

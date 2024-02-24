@@ -51,3 +51,7 @@
   font-size: 1rem;
   @apply animate-bounce;
 }
+
+.form_btn{
+  @apply px-2 flex py-2 w-full text-sm  flex-row justify-center items-center content-center bg-primary hover:bg-secondary text-white shadow-sm
+}
