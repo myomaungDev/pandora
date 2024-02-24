@@ -4,7 +4,7 @@ import { SERVER_PORT } from "./Config";
 import { AppDataSource } from "./DB";
 import errorHandler from "./Middlewares/error-handler";
 import UserRouter from "./Routes/users";
-
+import PostRouter from './Routes/post'
 const app: express.Application = express();
 
 app.use(express.json());
@@ -17,7 +17,7 @@ app.listen(SERVER_PORT, async () => {
   });
 
   app.use("/api/users", UserRouter);
- 
+  app.use("/api/posts", PostRouter);
   app.use(errorHandler);
   console.log(`API server is running at ${SERVER_PORT}`);
 });
