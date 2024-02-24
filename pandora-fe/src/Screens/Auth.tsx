@@ -1,9 +1,12 @@
 import React from "react";
+import { AppPageWrapper } from "../Components/Modules/PageWrapper";
 
 export const AppProfileScreen:React.FC =()=>{
     return(
-        <React.Fragment>
+       <AppPageWrapper>
+          <React.Fragment>
              app profile screen 
         </React.Fragment>
+       </AppPageWrapper>
     )
 }

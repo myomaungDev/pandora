@@ -6,6 +6,7 @@ import { AxiosError, AxiosResponse } from "axios";
 import { AppPagination } from "../Components/Atoms/AppPagination";
 import { AppAllPostsComponent } from "../Components/Organisms/Posts/AllPosts";
 import { AppNoData } from "../Components/Atoms/NoData";
+import { AppPageWrapper } from "../Components/Modules/PageWrapper";
 
 export const AppHomeScreen: React.FC = () => {
   const [posts, setPosts] = useState<postProps[]>();
@@ -32,22 +33,24 @@ export const AppHomeScreen: React.FC = () => {
 
   return (
     <React.Fragment>
-      {posts && posts.length > 0 ? (
-        <React.Fragment>
-          <div className="w-full flex flex-col space-y-2">
-            <AppAllPostsComponent posts={posts} />
-            <AppPagination
-              setPage={setPage}
-              page={page}
-              totalPages={totalPages}
-            />
-          </div>
-        </React.Fragment>
-      ) : (
-        <React.Fragment>
-          <AppNoData message="No posts in database." />
-        </React.Fragment>
-      )}
+      <AppPageWrapper>
+        {posts && posts.length > 0 ? (
+          <React.Fragment>
+            <div className="w-full flex flex-col space-y-2">
+              <AppAllPostsComponent posts={posts} />
+              <AppPagination
+                setPage={setPage}
+                page={page}
+                totalPages={totalPages}
+              />
+            </div>
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <AppNoData message="No posts in database." />
+          </React.Fragment>
+        )}
+      </AppPageWrapper>
     </React.Fragment>
   );
 };
