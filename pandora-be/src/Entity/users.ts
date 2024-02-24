@@ -8,8 +8,8 @@ import {
   BeforeUpdate,
   OneToMany,
 } from "typeorm";
-import bcrypt from "bcrypt";
 import { Post } from "./posts";
+import { hashedPassword } from "../Helpers";
 
 @Entity("users")
 export class User {
@@ -42,9 +42,7 @@ export class User {
   async hashPassword() {
     try {
       if (this.password) {
-        const saltRounds = 12;
-        const salt = bcrypt.genSaltSync(saltRounds);
-        this.password = bcrypt.hashSync(this.password, salt);
+        this.password = await hashedPassword(this.password);
       }
     } catch (error) {
       console.error("Error hashing password:", error);

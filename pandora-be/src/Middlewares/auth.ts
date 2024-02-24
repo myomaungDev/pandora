@@ -1,19 +1,14 @@
 import { Response, NextFunction } from "express";
-import jwt from "jsonwebtoken";
-export default function(req: any, _res: Response, next: NextFunction) {
+import { verifyToken } from "../Helpers";
+export default function (req: any, _res: Response, next: NextFunction) {
   try {
     const authHeader = req.get("Authorization");
     if (authHeader) {
-      const token: any = authHeader.split(" ")[1];
-      const decoded_token: any = jwt.verify(
-        token,
-        process.env.JWT_SECRET || "jwt_secret"
-      );
+      const token: string = authHeader.split(" ")[1];
+      const decoded_token: any = verifyToken(token)
       if (decoded_token) {
-        const user_id: any = decoded_token.userId;
-
+        const user_id: any = decoded_token.userId
         req.userId = user_id;
-        req.role = decoded_token.role;
         next();
       } else {
         const error: any = new Error("Unauthenticatd User!");
