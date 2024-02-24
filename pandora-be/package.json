@@ -9,6 +9,11 @@
     "reflect-metadata": "^0.2.1",
     "typeorm": "^0.3.20"
   },
+  "scripts": {
+    "dev": "nodemon dist/app",
+    "prod": "node dist/app",
+    "watch": "tsc -w"
+  },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
