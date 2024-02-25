@@ -5,6 +5,7 @@ import { AppSignupScreen } from "./Signup";
 import { AppSigninScreen } from "./Signin";
 import { AppProfileScreen } from "./Auth";
 import { AppCreatePostScreen } from "./CreatePost";
+import { AppEditPostScreen } from "./EditPostPost";
 export const AppRouter = createBrowserRouter([
   {
     path: "/",
@@ -13,6 +14,10 @@ export const AppRouter = createBrowserRouter([
   {
     path: "/post/:id",
     element: <AppSinglePostScreen />,
+  },
+  {
+    path: "/edit/:id",
+    element: <AppEditPostScreen />,
   },
   {
     path: "/signup",

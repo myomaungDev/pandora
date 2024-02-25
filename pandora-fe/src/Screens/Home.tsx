@@ -13,7 +13,7 @@ export const AppHomeScreen: React.FC = () => {
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(0);
   const fetchPosts = useCallback(() => {
-    API.get(`${APIURLS.post.all}?page=${page}`)
+    API.get(`${APIURLS.post.all}?page=${page}&limit=5`)
       .then((res: AxiosResponse) => {
         const { posts, totalPages } = res.data;
         setPosts(posts);

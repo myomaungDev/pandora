@@ -55,3 +55,18 @@
 .form_btn{
   @apply px-2 flex py-2 w-full text-sm  flex-row justify-center items-center content-center bg-primary hover:bg-secondary text-white shadow-sm
 }
+
+.btn-pagination {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-pagination:hover {
+  background-color: #3572b0;
+}
