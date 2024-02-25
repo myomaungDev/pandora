@@ -1,0 +1,8 @@
+pandora-be/yarn.lock
+pandora-be/node_modules/.yarn-integrity
+pandora-be/yarn-error.log
+pandora-be/node_modules/
+pandora-be/.env
+pandora-be/dist/
+pandora-fe/.vite/
+pandora-fe/node_modules/
