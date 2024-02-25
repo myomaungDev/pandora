@@ -60,6 +60,7 @@ export const allPosts = async (
         relations: ["user"],
         skip: (pageNumber - 1) * limitNumber,
         take: limitNumber,
+        order: { updated_at: "DESC" },
       });
       const totalPages = Math.ceil(total / limitNumber);
       res.status(200).json({
@@ -93,6 +94,7 @@ export const singlePost = async (
     } else {
       const post = await AppDataSource.manager.findOne(Post, {
         where: { id: Number(req.params.id) },
+        relations: { user: true },
       });
       res.status(200).json({
         data: post,
@@ -122,7 +124,7 @@ export const updatePost = async (
       throw error;
     } else {
       const post = await AppDataSource.manager.findOne(Post, {
-        where: { id:req.params.id, user: { id: req.userId } },
+        where: { id: req.params.id, user: { id: req.userId } },
       });
       if (post) {
         if (req.body.title) {
