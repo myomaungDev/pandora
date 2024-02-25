@@ -3,8 +3,9 @@ import { postProps } from "../../../Interfaces";
 import { AppPostCard } from "../../Atoms/PostCard";
 interface props {
   posts: postProps[];
+  refresh:()=>void
 }
-export const AppAllPostsComponent: React.FC<props> = ({ posts }) => {
+export const AppAllPostsComponent: React.FC<props> = ({ posts,refresh }) => {
   return (
     <React.Fragment>
       <div className="w-full grid grid-cols-12 gap-3">
@@ -14,7 +15,7 @@ export const AppAllPostsComponent: React.FC<props> = ({ posts }) => {
             key={index}
             className="col-span-12 md:col-span-12"
           >
-            <AppPostCard post={post} />
+            <AppPostCard refresh={refresh} post={post} />
           </div>
         ))}
       </div>

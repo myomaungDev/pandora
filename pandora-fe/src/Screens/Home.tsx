@@ -37,7 +37,7 @@ export const AppHomeScreen: React.FC = () => {
         {posts && posts.length > 0 ? (
           <React.Fragment>
             <div className="w-full flex flex-col space-y-2">
-              <AppAllPostsComponent posts={posts} />
+              <AppAllPostsComponent refresh={fetchPosts} posts={posts} />
               <AppPagination
                 setPage={setPage}
                 page={page}
