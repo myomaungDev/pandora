@@ -1,17 +1,27 @@
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "../Config";
-import { User } from "../Entity/users";
+
 import bcrypt from "bcrypt";
 
-export const signToken = (payload: User): string => {
-  const accessToken = jwt.sign({ userId: payload.id }, JWT_SECRET, {
-    expiresIn: "1d",
-  });
+export const signToken = (payload:any): string => {
+
+  const accessToken = jwt.sign(
+    {
+      userId: payload.id,
+      username: payload.username,
+      email: payload.email,
+    },
+    JWT_SECRET,
+    {
+      expiresIn: "1d",
+    }
+  );
   return accessToken;
 };
 
 export const verifyToken = (access_token: string): any => {
   const payload: any = jwt.verify(access_token, JWT_SECRET);
+  
   return payload;
 };
 
@@ -19,7 +29,7 @@ export const comparePassword = async (
   password: string,
   hashedPassword: string
 ): Promise<boolean> => {
-  const isMatch: boolean =  bcrypt.compareSync(password, hashedPassword);
+  const isMatch: boolean = bcrypt.compareSync(password, hashedPassword);
   return isMatch;
 };
 

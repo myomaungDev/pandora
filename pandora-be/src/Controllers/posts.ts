@@ -17,8 +17,9 @@ export const createPost = async (
       error.statusCode = 422;
       throw error;
     } else {
+
       const user = await AppDataSource.manager.findOne(User, {
-        where: { id: req.body.userId },
+        where: { id: req.userId },
       });
 
       const post = new Post();
@@ -57,7 +58,7 @@ export const allPosts = async (
       const pageNumber = parseInt(page as string);
       const limitNumber = parseInt(limit as string);
       const [posts, total] = await AppDataSource.manager.findAndCount(Post, {
-        relations: ["user"],
+        relations: { user: true },
         skip: (pageNumber - 1) * limitNumber,
         take: limitNumber,
         order: { updated_at: "DESC" },
