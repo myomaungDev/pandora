@@ -19,7 +19,7 @@ export const AppPostCard: React.FC<props> = ({ post }) => {
         {user && isAuth && user.id === post.user.id ? (
           <React.Fragment>
             <Link
-              to={`/edit/${post.id}`}
+              to={`/edit-post/${post.id}`}
               className="absolute top-0 bg-secondary hover:bg-primary right-0 px-2 py-2"
             >
               <RiEditLine className="w-auto h-6 text-white" />

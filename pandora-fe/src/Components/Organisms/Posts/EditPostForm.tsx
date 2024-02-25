@@ -6,7 +6,7 @@ interface props {
   control: Control<postFormProps, any>;
   children: React.ReactNode;
 }
-export const AppCreatePostForm: React.FC<props> = ({ control, children }) => {
+export const AppEditPostForm: React.FC<props> = ({ control, children }) => {
   return (
     <React.Fragment>
       <div className="w-full flex flex-col justify-center items-center content-center ">
@@ -78,7 +78,6 @@ export const AppCreatePostForm: React.FC<props> = ({ control, children }) => {
                     onBlur={onBlur}
                     onChange={(e) => onChange(e.target.value)}
                     rows={10}
-
                     className="w-full form-textarea text-sm text-secondary"
                   />
                   {errors && errors.content && errors.content.message ? (
@@ -96,12 +95,11 @@ export const AppCreatePostForm: React.FC<props> = ({ control, children }) => {
           <div className="my-5 flex w-full justify-end items-center content-center">
             <button className="form_btn max-w-xs">
               <span className="flex-grow text-sm uppercase font-bold">
-                Post
+                Update
               </span>
               <AiOutlineArrowRight className="w-auto h-6" />
             </button>
           </div>
-          
         </div>
       </div>
     </React.Fragment>

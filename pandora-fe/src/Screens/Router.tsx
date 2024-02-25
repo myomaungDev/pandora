@@ -16,7 +16,7 @@ export const AppRouter = createBrowserRouter([
     element: <AppSinglePostScreen />,
   },
   {
-    path: "/edit/:id",
+    path: "/edit-post/:id",
     element: <AppEditPostScreen />,
   },
   {
