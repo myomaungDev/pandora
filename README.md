@@ -18,6 +18,13 @@
 
 3. Modify environment values.
     - Create a `.env` file in the API directory (`/project folder/pandora-be/.env`) based on `.env.example`.
+    - Update the database configuration in the `.env` file with your database credentials.
+
+### Database Setup
+
+1. Create the database according to the configuration specified in the `.env` file.
+
+2. Modify the `.env` file with the database credentials.
 
 ### Run Server in Development Mode
 
@@ -35,6 +42,8 @@
     # or
     npm run dev
     ```
+
+3. Tables are automatically synchronized into the database in development mode.**Don't need to import  database**
 
 ### Run Server in Production Mode
 
@@ -67,6 +76,15 @@
     npm install
     # or
     yarn
+    ```
+
+3. Modify API base URL.
+    - The default configuration for the API base URL is located in `/pandora-fe/src/Config/index.ts`.
+    - To change the API URL, open `index.ts` and update the `BASE_URL` variable.
+    ```typescript
+    export const AppConfig = {
+      BASE_URL: "http://127.0.0.1:8000/api",
+    };
     ```
 
 ### Run App
